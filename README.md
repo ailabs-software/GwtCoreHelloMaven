@@ -1,0 +1,2 @@
+# GwtCoreHelloMaven
+Inherits User 
