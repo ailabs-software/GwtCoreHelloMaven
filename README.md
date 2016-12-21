@@ -16,3 +16,9 @@ your gwtcorehellomaven.nocache.js shouldnt be in src/main/webapp anyway, it will
 [15:25] <niloc132> maven operates on "convention over configuration", meaning rather than every project writing build scripts that compile sources from one path and to another, and each has to define their own, maven makes assumptions about what goes where, and all plugins keep those assumptions in mind
 [15:25] <niloc132> src/ contains, obviously, sources, target/ is the compiled output (including compiled js from gwt)
 
+[15:28] <niloc132> each "project" or "module" has a pom.xml, and each results in exactly one output, often a jar but can be a war/zip, etc
+[15:28] <niloc132> making a pom generate multiple jars with different contents is considered cheating, and makes depending on that project slightly tricky
+[15:28] <niloc132> so you are encouraged to break up modules, and have a "parent" project contain those as children
+[15:32] <niloc132> src/test is then tests for src/main
+[15:32] <niloc132> some projects break out src/it as integration tests (not unit tests)
+
