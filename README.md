@@ -22,3 +22,22 @@ your gwtcorehellomaven.nocache.js shouldnt be in src/main/webapp anyway, it will
 [15:32] <niloc132> src/test is then tests for src/main
 [15:32] <niloc132> some projects break out src/it as integration tests (not unit tests)
 
+
+HOW TO OPTIMIZE AWAY CONSTRUCTOR CALLS TO INITIALIZE static, constant values:
+
+public class EventType
+{
+  public static EventType CLICK = createEnumValue("click");
+
+  @HasNoSideEffects
+  private static EventType createEnumValue(String stringValue) {
+    return new EventType(stringValue);
+  }
+  
+    /** Provide a toString() method to convert the value to a suitable browser value */
+    public String toString()
+    {
+      return stringValue;
+    }
+}
+
